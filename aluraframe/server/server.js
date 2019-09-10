@@ -1,7 +1,8 @@
-var http = require('http')
-    ,app = require('./config/express');
+const express = require("express");
 
-http.createServer(app).listen(3000, function() {
-    console.log('Servidor estutando na porta: ' + this.address().port);
-});
+const app = express();
+app.use(express.json());
 
+app.use("/api", require("./app/routes/Routes"));
+
+app.listen(3000);
